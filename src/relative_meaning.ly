@@ -9,6 +9,8 @@
 %% References:
 %% http://lilypond.org/doc/v2.18/Documentation/notation/writing-pitches
 
+\version "2.16.2"
+
 \score {
 	<<
 		\new Voice="foo" \relative { c d e f g }
