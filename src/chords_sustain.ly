@@ -1,6 +1,10 @@
-\version "2.16.2"
+%{
 
-%% this example explores how to write sustain chords in lilypond
+This example explores how to write sustain chords in lilypond
+
+%}
+
+\version "2.18.2"
 
 chordset = \chordmode
 {

@@ -1,9 +1,6 @@
 %{
 
-This example shows how to use a function in lilypond.
-
-Notes:
-- the function myGrace works well with one note or many.
+This is an attempt to write a function doing nothing with it's arguments
 
 References:
 http://stackoverflow.com/questions/19396078/what-language-mechanisms-does-lilypond-have-for-simple-abbreviations-to-avoid-c
@@ -12,7 +9,7 @@ http://stackoverflow.com/questions/19396078/what-language-mechanisms-does-lilypo
 
 \version "2.18.2"
 
-myGrace = #(define-music-function (parser location notes) (ly:music?) #{ \grace $notes #})
+myGrace = #(define-music-function (parser location notes) (ly:music?) #{ #})
 
 \score {
 	<<

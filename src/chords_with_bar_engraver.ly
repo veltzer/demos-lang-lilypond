@@ -1,4 +1,10 @@
-%% this example shows how to add bar engravers to plain chords
+%{
+
+This example shows how to add bar engravers to plain chords
+
+%}
+
+\version "2.18.2"
 
 \score {
 	<<

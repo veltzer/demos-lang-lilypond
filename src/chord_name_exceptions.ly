@@ -1,5 +1,11 @@
-%% This example shows how to customize chord names...
-%% I use it for altered chords.
+%{
+
+This example shows how to customize chord names...
+I use it for altered chords.
+
+%}
+
+\version "2.18.2"
 
 myChordDefinitions = {
 	<c ees ges bes des' fes' aes'>-\markup \super {7alt}

@@ -1,6 +1,10 @@
-%% This example explores how to do multiple voices right which are
-%% well aligned. If you just write three voices and add them up they are not well
-%% aligned. See the example
+%{
+
+This example explores how to do multiple voices right which are
+well aligned. If you just write three voices and add them up they are not well
+aligned. See the example
+
+%}
 
 \version "2.18.2"
 

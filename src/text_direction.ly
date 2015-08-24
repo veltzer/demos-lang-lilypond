@@ -1,4 +1,10 @@
-%% This example shows how to do regular markup with hebrew text
+%{
+
+This example shows how to do regular markup with hebrew text
+
+%}
+
+\version "2.18.2"
 
 \markup {
 	\fill-line {

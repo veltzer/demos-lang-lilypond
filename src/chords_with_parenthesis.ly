@@ -1,7 +1,13 @@
-\version "2.16.2"
+%{
 
-%% Example how to parenthesize chord names
-%% http://lilypond.1069038.n5.nabble.com/Parenthesizing-chord-names-td44370.html
+Example how to parenthesize chord names
+
+References:
+http://lilypond.1069038.n5.nabble.com/Parenthesizing-chord-names-td44370.html
+
+%}
+
+\version "2.18.2"
 
 #(define (left-parenthesis-ignatzek-chord-names in-pitches bass inversion context) (markup #:line ("(" (ignatzek-chord-names in-pitches bass inversion context))))
 #(define (right-parenthesis-ignatzek-chord-names in-pitches bass inversion context) (markup #:line ((ignatzek-chord-names in-pitches bass inversion context) ")")))

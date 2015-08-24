@@ -209,11 +209,11 @@ PartVoice=\relative c'' {
   \column {
     \huge \larger \bold
     \fill-line {
-    \larger "This is the title" 
+    \larger "This is the title"
     }
     \fill-line {
     \large \smaller \bold
-    \larger "This is the subtitle" 
+    \larger "This is the subtitle"
     }
     \fill-line {
     \smaller \bold
