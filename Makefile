@@ -29,7 +29,7 @@ all: $(ALL)
 .PHONY: clean
 clean:
 	$(info doing [$@])
-	@rm -f */*.pdf */*.midi */*.ps
+	$(Q)git clean -xdf > /dev/null
 
 $(TGT): %.pdf: %.ly
 	$(info doing [$@])
