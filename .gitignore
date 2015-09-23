@@ -1,3 +1,9 @@
+# lilypond output stuff
 *.pdf
 *.ps
 *.midi
+
+# python stuff
+*.pyc
+*.pyo
+__pycache__
