@@ -3,7 +3,8 @@
 This example shows the problem of aligning text to the right in lilypond.
 Without the following two empty 'right-column' entires this example
 would show up with one column aligned to the right of the screen
-and the other to the right with lots of space in between.
+and the other to the left (internally alight to the right)
+with lots of space in between.
 
 I am not aware of any other means to get at the result that you get
 from this example which does not involved the two 'right-column' entires.
