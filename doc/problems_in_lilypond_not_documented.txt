@@ -1,0 +1,4 @@
+- when you have two alternative voltas and before the alternatives there is
+	a note with an arc (g~) its supposed to be connected to *two*
+	g's. One in the begining of the first alternative and one in the second.
+	The first alternative 'g' shows an arc coming to it. The second does not.
