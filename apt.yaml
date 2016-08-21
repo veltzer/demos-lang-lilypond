@@ -1,0 +1,6 @@
+---
+packages:
+        - name: lilypond
+        - name: lilypond-doc
+        - name: lilypond-doc-html
+        - name: lilypond-doc-pdf
