@@ -7,3 +7,6 @@
 *.pyc
 *.pyo
 __pycache__
+
+# tools
+/tools.stamp

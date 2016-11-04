@@ -9,7 +9,7 @@ DO_MKDBG:=0
 ########
 SRC:=$(shell find src -name "*.ly")
 TGT:=$(addsuffix .pdf, $(basename $(SRC)))
-ALL:=$(TGT)
+ALL:=tools.stamp $(TGT)
 
 ifeq ($(DO_MKDBG),1)
 Q=
@@ -25,6 +25,11 @@ endif # DO_MKDBG
 .PHONY: all
 all: $(ALL)
 	@true
+
+tools.stamp: templardefs/deps.py
+	$(info doing [$@])
+	@templar_cmd install_deps
+	@make_helper touch-mkdir $@
 
 .PHONY: clean
 clean:
