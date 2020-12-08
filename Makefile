@@ -33,7 +33,7 @@ tools.stamp: config/deps.py
 .PHONY: clean
 clean:
 	$(info doing [$@])
-	$(Q)git clean -xdf > /dev/null
+	$(Q)git clean -qffxd
 
 $(TGT): %.pdf: %.ly
 	$(info doing [$@])
