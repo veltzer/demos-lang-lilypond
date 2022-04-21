@@ -35,7 +35,7 @@ clean:
 	$(info doing [$@])
 	$(Q)git clean -qffxd
 
-$(TGT): %.pdf: %.ly
+$(TGT): %.pdf: %.ly scripts/wrapper_lilypond.py
 	$(info doing [$@])
 	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
 

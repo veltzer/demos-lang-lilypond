@@ -32,8 +32,8 @@ aligned. See the example
 		\new StaffGroup <<
 			\new Staff << \voiceA \\ \voiceB \\ \voiceC >>
 		>>
-		%% \partcombine DOES NOT solve the problem
-		\new Staff << \partcombine \voiceA \voiceB \voiceC >>
+		%% \partCombine DOES NOT solve the problem
+		\new Staff << \partCombine \voiceA \voiceB \voiceC >>
 		\new Staff << \relative { r8 e'' g f e dis | <e a,,>2. } >>
 	>>
 }
