@@ -3,13 +3,27 @@
 ##############
 # should we show commands executed ?
 DO_MKDBG:=0
+# should we do the tools?
+DO_TOOlS:=1
+# do you want dependency on the Makefile itself ?
+DO_ALLDEP:=1
 
 ########
 # vars #
 ########
 SRC:=$(shell find src -name "*.ly")
 TGT:=$(addsuffix .pdf, $(basename $(SRC)))
-ALL:=tools.stamp $(TGT)
+ALL:=$(TGT)
+
+# dependency on tools.stamp
+ifeq ($(DO_TOOLS),1)
+ALL+=tools.stamp
+endif
+
+# dependency on the makefile itself
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif
 
 ifeq ($(DO_MKDBG),1)
 Q=
@@ -35,11 +49,15 @@ clean:
 	$(info doing [$@])
 	$(Q)git clean -qffxd
 
-$(TGT): %.pdf: %.ly scripts/wrapper_lilypond.py
-	$(info doing [$@])
-	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
-
 .PHONY: debug
 debug:
 	$(info SRC is $(SRC))
 	$(info TGT is $(TGT))
+	$(info ALL is $(ALL))
+
+##################
+# patterns rules #
+##################
+$(TGT): %.pdf: %.ly scripts/wrapper_lilypond.py
+	$(info doing [$@])
+	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
