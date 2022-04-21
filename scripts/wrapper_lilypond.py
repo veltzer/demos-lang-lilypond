@@ -33,19 +33,17 @@ def remove_outputs_if_exist():
 # print output of the program in case of error
 def print_outputs(output, errout, status, args):
     if output!='':
-        print('{0}: stdout is'.format(sys.argv[0]), file=sys.stderr)
-        print(output, file=sys.stderr)
+        print(f'{sys.argv[0]}: stdout is\n{output}', file=sys.stderr)
     if errout!='':
-        print('{0}: stderr is'.format(sys.argv[0]), file=sys.stderr)
-        print(errout, file=sys.stderr)
-    print('{0}: return code is [{1}]'.format(sys.argv[0], status), file=sys.stderr)
-    print('{0}: error in executing {1}'.format(sys.argv[0], args), file=sys.stderr)
+        print(f'{sys.argv[0]}: stderr is\n{errout}', file=sys.stderr)
+    print(f'{sys.argv[0]}: return code is [{status}]', file=sys.stderr)
+    print(f'{sys.argv[0]}: error in executing {args}', file=sys.stderr)
 
 # this function is here because we want to supress output until we know
 # there is an error (and subprocess.check_output does not do this)
 def system_check_output(args):
     if p_debug:
-        print('{0}: running [{1}]'.format(sys.argv[0], args), file=sys.stderr)
+        print(f'{sys.argv[0]}: running [{args}]', file=sys.stderr)
     pr=subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     (output,errout)=pr.communicate()
     output=output.decode()
@@ -82,7 +80,7 @@ p_stop_on_output=True
 ########
 
 if len(sys.argv)!=5:
-    print('{0}: usage: [ps] [pdf] [pdf without suffix] [lilypond input]'.format(sys.argv[0]))
+    print(f'{sys.argv[0]}: usage: [ps] [pdf] [pdf without suffix] [lilypond input]')
     sys.exit(1)
 
 p_ps=sys.argv[1]
@@ -91,14 +89,14 @@ p_out=sys.argv[3]
 p_ly=sys.argv[4]
 
 if p_debug:
-    print('{0}: arguments are [{1}]'.format(sys.argv[0], sys.argv), file=sys.stderr)
+    print(f'{sys.argv[0]}: arguments are [{sys.argv}]', file=sys.stderr)
 
 remove_outputs_if_exist()
 
 # run the command
 args=[]
 args.append('lilypond')
-args.append('--loglevel={0}'.format(p_loglevel))
+args.append(f'--loglevel={p_loglevel}')
 if p_do_ps:
     args.append('--ps')
 if p_do_pdf:
@@ -116,7 +114,7 @@ try:
         os.chmod(p_pdf,0o0444)
 except Exception as e:
     remove_outputs_if_exist()
-    print('{0}: exiting because of errors'.format(sys.argv[0]), file=sys.stderr)
+    print(f'{sys.argv[0]}: exiting because of errors', file=sys.stderr)
     sys.exit(1)
 
 # do pdf reduction
