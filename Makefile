@@ -17,7 +17,7 @@ ALL:=$(TGT)
 
 # dependency on tools.stamp
 ifeq ($(DO_TOOLS),1)
-ALL+=tools.stamp
+.EXTRA_PREREQS+=tools.stamp
 endif
 
 # dependency on the makefile itself
