@@ -4,7 +4,7 @@
 # should we show commands executed ?
 DO_MKDBG:=0
 # should we do the tools?
-DO_TOOlS:=1
+DO_TOOLS:=1
 # do you want dependency on the Makefile itself ?
 DO_ALLDEP:=1
 
