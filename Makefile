@@ -11,13 +11,15 @@ DO_ALLDEP:=1
 ########
 # vars #
 ########
+ALL:=
+TOOLS:=tools.stamp
 SRC:=$(shell find src -name "*.ly")
 TGT:=$(addsuffix .pdf, $(basename $(SRC)))
-ALL:=$(TGT)
 
 # dependency on tools.stamp
 ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=tools.stamp
+ALL+=$(TOOLS)
 endif
 
 # dependency on the makefile itself
@@ -33,6 +35,8 @@ Q=@
 #.SILENT:
 endif # DO_MKDBG
 
+ALL+=$(TGT)
+
 #########
 # rules #
 #########
@@ -40,12 +44,17 @@ endif # DO_MKDBG
 all: $(ALL)
 	@true
 
-tools.stamp: config/deps.py
-	$(info doing [$@])
-	@touch $@
+$(TOOLS):  config.deps packages.txt
+	$(info doing $@)
+	$(Q)xargs -a packages.txt sudo apt-get install
+	$(Q)touch $@
 
 .PHONY: clean
 clean:
+	$(Q)rm $(ALL)
+
+.PHONY: clean_hard
+clean_hard:
 	$(info doing [$@])
 	$(Q)git clean -qffxd
 
@@ -55,9 +64,9 @@ debug:
 	$(info TGT is $(TGT))
 	$(info ALL is $(ALL))
 
-##################
-# patterns rules #
-##################
+############
+# patterns #
+############
 $(TGT): %.pdf: %.ly scripts/wrapper_lilypond.py
 	$(info doing [$@])
 	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
