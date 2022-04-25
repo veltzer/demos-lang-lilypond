@@ -44,7 +44,7 @@ ALL+=$(TGT)
 all: $(ALL)
 	@true
 
-$(TOOLS):  config.deps packages.txt
+$(TOOLS):  config/deps.py packages.txt
 	$(info doing $@)
 	$(Q)xargs -a packages.txt sudo apt-get install
 	$(Q)touch $@
