@@ -20,12 +20,12 @@ TGT:=$(addsuffix .pdf, $(basename $(SRC)))
 ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=tools.stamp
 ALL+=$(TOOLS)
-endif
+endif # DO_TOOLS
 
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
 .EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
-endif
+endif # DO_ALLDEP
 
 ifeq ($(DO_MKDBG),1)
 Q=
