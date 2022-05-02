@@ -3,8 +3,6 @@
 ##############
 # should we show commands executed ?
 DO_MKDBG:=0
-# should we do the tools?
-DO_TOOLS:=1
 # do you want dependency on the Makefile itself ?
 DO_ALLDEP:=1
 
@@ -12,15 +10,8 @@ DO_ALLDEP:=1
 # vars #
 ########
 ALL:=
-TOOLS:=tools.stamp
 SRC:=$(shell find src -name "*.ly")
 TGT:=$(addsuffix .pdf, $(basename $(SRC)))
-
-# dependency on tools.stamp
-ifeq ($(DO_TOOLS),1)
-.EXTRA_PREREQS+=tools.stamp
-ALL+=$(TOOLS)
-endif # DO_TOOLS
 
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
@@ -43,11 +34,6 @@ ALL+=$(TGT)
 .PHONY: all
 all: $(ALL)
 	@true
-
-$(TOOLS):  packages.txt config/deps.py
-	$(info doing $@)
-	$(Q)xargs -a packages.txt sudo apt-get -y install
-	$(Q)touch $@
 
 .PHONY: clean
 clean:
