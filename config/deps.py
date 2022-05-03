@@ -1,5 +1,6 @@
 packages=[
     'lilypond',
+    'qpdf',
 ]
 packages_dev=[
     'lilypond-doc',
