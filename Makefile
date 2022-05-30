@@ -11,7 +11,7 @@ DO_ALLDEP:=1
 ########
 ALL:=
 SRC:=$(shell find src -name "*.ly")
-TGT:=$(addsuffix .pdf, $(basename $(SRC)))
+TGT:=$(addprefix out/,$(addsuffix .pdf, $(basename $(SRC))))
 
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
@@ -53,6 +53,7 @@ debug:
 ############
 # patterns #
 ############
-$(TGT): %.pdf: %.ly scripts/wrapper_lilypond.py
+$(TGT): out/%.pdf: %.ly scripts/wrapper_lilypond.py
 	$(info doing [$@])
+	$(Q)mkdir -p $(dir $@)
 	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
