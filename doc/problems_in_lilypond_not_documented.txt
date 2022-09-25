@@ -1,9 +1,0 @@
-- when you have two alternative voltas and before the alternatives there is
-	a note with an arc (g~) its supposed to be connected to *two*
-	g's. One in the begining of the first alternative and one in the second.
-	The first alternative 'g' shows an arc coming to it. The second does not.
-- when you wrote a piece of music and the volta alternatives do not align
-	you get a weird warning from lilypond "cannot end volta spanner" with no
-	line number etc. This is a very bad in terms of error reporting. I have
-	to do a "lion in the desert"/"binary search" by commenting parts of my
-	tune on and off to find the problem.
