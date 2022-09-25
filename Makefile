@@ -13,6 +13,9 @@ ALL:=
 SRC:=$(shell find src -name "*.ly")
 TGT:=$(addprefix out/,$(addsuffix .pdf, $(basename $(SRC))))
 
+# parallelize
+MAKEFLAGS := --jobs=$(shell nproc)
+
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
 .EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
