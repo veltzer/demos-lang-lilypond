@@ -14,7 +14,7 @@ SRC:=$(shell find src -name "*.ly")
 TGT:=$(addprefix out/,$(addsuffix .pdf, $(basename $(SRC))))
 
 # parallelize
-MAKEFLAGS := --jobs=$(shell nproc)
+# MAKEFLAGS := --jobs=$(shell nproc)
 
 # dependency on the makefile itself
 ifeq ($(DO_ALLDEP),1)
