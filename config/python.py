@@ -1,6 +1,8 @@
 make_requires = [
     "pymakehelper",
+    "pydmt",
+    "pyclassifiers",
 ]
-dev_requires = [
+test_requires = [
     "pylint",
 ]
