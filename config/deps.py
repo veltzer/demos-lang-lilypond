@@ -1,9 +1,9 @@
 packages=[
-    'lilypond',
-    'qpdf',
+    "lilypond",
+    "qpdf",
 ]
 packages_dev=[
-    'lilypond-doc',
-    'lilypond-doc-html',
-    'lilypond-doc-pdf',
+    "lilypond-doc",
+    "lilypond-doc-html",
+    "lilypond-doc-pdf",
 ]
