@@ -14,7 +14,7 @@ This example shows how to add bar engravers to plain chords
 			\with {
 				%% for lilypond 2.12
 				%%\override BarLine #'bar-size = #4
-				\override BarLine #'bar-extent = #'(-2 . 2)
+				\override BarLine.bar-extent = #'(-2 . 2)
 				\consists "Bar_engraver"
 			}
 			\chordmode {
