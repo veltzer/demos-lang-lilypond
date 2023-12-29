@@ -1,3 +1,6 @@
+config_requires = []
+dev_requires = []
+install_requires = []
 make_requires = [
     "pymakehelper",
     "pydmt",
@@ -6,3 +9,4 @@ make_requires = [
 test_requires = [
     "pylint",
 ]
+requires = config_requires + install_requires + make_requires + test_requires
