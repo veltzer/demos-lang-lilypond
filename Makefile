@@ -10,7 +10,7 @@ DO_ALLDEP:=1
 # vars #
 ########
 ALL:=
-SRC:=$(shell find src -name "*.ly")
+SRC:=$(shell find src -type f -and -name "*.ly")
 TGT:=$(addprefix out/,$(addsuffix .pdf, $(basename $(SRC))))
 
 # parallelize
