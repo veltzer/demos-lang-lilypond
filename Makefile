@@ -16,11 +16,6 @@ TGT:=$(addprefix out/,$(addsuffix .pdf, $(basename $(SRC))))
 # parallelize
 # MAKEFLAGS := --jobs=$(shell nproc)
 
-# dependency on the makefile itself
-ifeq ($(DO_ALLDEP),1)
-.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
-endif # DO_ALLDEP
-
 ifeq ($(DO_MKDBG),1)
 Q=
 # we are not silent in this branch
@@ -60,3 +55,10 @@ $(TGT): out/%.pdf: %.ly scripts/wrapper_lilypond.py
 	$(info doing [$@])
 	$(Q)mkdir -p $(dir $@)
 	$(Q)scripts/wrapper_lilypond.py $(dir $@)$(basename $(notdir $@)).ps $(dir $@)$(basename $(notdir $@)).pdf $(dir $@)$(basename $(notdir $@)) $<
+
+##########
+# alldep #
+##########
+ifeq ($(DO_ALLDEP),1)
+.EXTRA_PREREQS+=$(foreach mk, ${MAKEFILE_LIST},$(abspath ${mk}))
+endif # DO_ALLDEP
