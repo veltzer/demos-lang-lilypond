@@ -7,7 +7,7 @@ DO_MKDBG:=0
 DO_ALLDEP:=1
 
 ########
-# vars #
+# code #
 ########
 ALL:=
 SRC:=$(shell find src -type f -and -name "*.ly")
