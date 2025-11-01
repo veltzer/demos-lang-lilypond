@@ -131,7 +131,7 @@ def main():
     # do linearization
     if P_DO_QPDF:
         # delete=False since we are going to move the file
-        with tempfile.NamedTemporaryFile(delete=False) as temp:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp:
             system_check_output(["qpdf", "--linearize", p_pdf, temp.name], p_ps, p_pdf)
             shutil.move(temp.name, p_pdf)
 
