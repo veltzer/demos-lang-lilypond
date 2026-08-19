@@ -78,6 +78,20 @@ def system_check_output(args, p_ps, p_pdf, stop_on_output=True):
             sys.exit(1)
 
 
+def build_lilypond_args(p_out, p_ly):
+    """ Build the lilypond command line. """
+    args=[]
+    args.append("lilypond")
+    args.append(f"--loglevel={P_LOGLEVEL}")
+    if P_DO_PS:
+        args.append("--ps")
+    if P_DO_PDF:
+        args.append("--pdf")
+    args.append(f"--output={p_out}")
+    args.append(p_ly)
+    return args
+
+
 def main():
     """
     main entry point
@@ -97,15 +111,7 @@ def main():
     remove_outputs_if_exist(p_ps, p_pdf)
 
     # run the command
-    args=[]
-    args.append("lilypond")
-    args.append(f"--loglevel={P_LOGLEVEL}")
-    if P_DO_PS:
-        args.append("--ps")
-    if P_DO_PDF:
-        args.append("--pdf")
-    args.append(f"--output={p_out}")
-    args.append(p_ly)
+    args=build_lilypond_args(p_out, p_ly)
     try:
         # to make sure that lilypond shuts up...
         #subprocess.check_output(args)
@@ -115,7 +121,7 @@ def main():
             os.chmod(p_ps,0o0444)
         if P_DO_PDF:
             os.chmod(p_pdf,0o0444)
-    except Exception:
+    except OSError:
         remove_outputs_if_exist(p_ps, p_pdf)
         print(f"{sys.argv[0]}: exiting because of errors", file=sys.stderr)
         sys.exit(1)
