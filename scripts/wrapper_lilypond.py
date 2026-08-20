@@ -13,13 +13,12 @@ Why do we need this script?
 - To do extra stuff on the output coming out from lilypond like reduce the size of the pdf and more.
 """
 
-import sys
 import os
 import os.path
-import subprocess
 import shutil
+import subprocess
+import sys
 import tempfile
-
 
 # do postscript?
 P_DO_PS=True
