@@ -1,5 +1,5 @@
-demos-lilypond
-==============
+demos-lang-lilypond
+===================
 
 Demos for the lilypond language
 
