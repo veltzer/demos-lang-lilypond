@@ -6,14 +6,14 @@ reject_dot_src_dirs = true
 
 [analyzer.python]
 
-[processor.ruff]
+[processor.checker.ruff]
 src_dirs = ["src", "scripts"]
 
 
-[processor.mypy]
+[processor.checker.mypy]
 src_dirs = ["src", "scripts"]
 
-[processor.taplo]
+[processor.checker.taplo]
 src_files = [".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
 
 # The Makefile rendered each src/*.ly to out/x.pdf through
@@ -21,7 +21,7 @@ src_files = [".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
 # cleans partial outputs, and shrinks the pdf). The generator drives
 # scripts/lilypond_gen.py, a thin adapter mapping the generator's <in> <out>
 # to the wrapper's four-argument call.
-[processor.generator.lilypond]
+[processor.generator.generic.lilypond]
 command = "scripts/lilypond_gen.py"
 src_dirs = ["src"]
 src_extensions = [".ly"]
@@ -37,10 +37,10 @@ system = [
 ]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.actionlint]
+[processor.checker.actionlint]
 src_dirs = [".github/workflows"]
 
 # ─── markdown ────────────────────────────────────────────────────────────────
 
-[processor.rumdl]
+[processor.checker.rumdl]
 src_files = ["README.md"]
