@@ -109,6 +109,12 @@ def main():
 
     remove_outputs_if_exist(p_ps, p_pdf)
 
+    # lilypond's bundled fontconfig only has ~/.fontconfig as a writable cache
+    # dir. On a fresh machine (CI) parallel lilypond runs race to create it and
+    # the losers print "Fontconfig error: No writable cache directories",
+    # which we treat as an error. Creating it up front removes the race.
+    os.makedirs(os.path.expanduser("~/.fontconfig"), exist_ok=True)
+
     # run the command
     args=build_lilypond_args(p_out, p_ly)
     try:
