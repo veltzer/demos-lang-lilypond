@@ -28,13 +28,9 @@ src_extensions = [".ly"]
 output_dir = "out"
 output_extension = "pdf"
 batch = false
-
 # lilypond renders the scores; qpdf linearizes and shrinks the produced pdf.
-[dependencies]
-system = [
-    "lilypond",
-    "qpdf",
-]
+# Both are installed into the project at the releases rsconstruct.lock pins.
+required_tools = ["lilypond", "qpdf"]
 
 # lint the GitHub Actions workflow files with actionlint
 [processor.checker.iactionlint]
