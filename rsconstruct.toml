@@ -32,6 +32,12 @@ batch = false
 # Both are installed into the project at the releases rsconstruct.lock pins.
 required_tools = ["lilypond", "qpdf"]
 
+# The wrapper round-trips the pdf through pdf2ps and ps2pdf, which come from
+# ghostscript (the project lilypond bundles a Ghostscript of its own, but
+# only for its own use).
+[dependencies]
+system = ["ghostscript"]
+
 # lint the GitHub Actions workflow files with actionlint
 [processor.checker.iactionlint]
 src_dirs = [".github/workflows"]
