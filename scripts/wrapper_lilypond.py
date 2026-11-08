@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 """
 wrapper to run lilypond.
@@ -26,8 +26,9 @@ P_DO_PS=True
 P_DO_PDF=True
 # emit debug info?
 P_DEBUG=False
-# unlink the postscript file at the end?
-P_UNLINK_PS=False
+# unlink the postscript file at the end? Yes: only the pdf is the build's output,
+# and a postscript file left next to it would be an undeclared one.
+P_UNLINK_PS=True
 # do you want to linearize the pdf file afterwards?
 P_DO_QPDF=True
 # what warning level do you want?
