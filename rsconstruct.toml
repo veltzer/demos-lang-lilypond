@@ -14,7 +14,7 @@ src_dirs = ["src", "scripts"]
 src_dirs = ["src", "scripts"]
 
 [processor.checker.taplo]
-src_files = [".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
+src_files = [".ruff.toml", ".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
 
 # The Makefile rendered each src/*.ly to out/x.pdf through
 # scripts/wrapper_lilypond.py (which runs lilypond, treats warnings as errors,
