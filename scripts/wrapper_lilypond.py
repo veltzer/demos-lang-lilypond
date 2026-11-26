@@ -61,7 +61,7 @@ def print_outputs(output, errout, status, args):
     print(f"{sys.argv[0]}: error in executing {args}", file=sys.stderr)
 
 
-def system_check_output(args, p_ps, p_pdf, stop_on_output=True):
+def system_check_output(args, p_ps, p_pdf, *, stop_on_output=True):
     """
     this function is here because we want to supress output until we know
     there is an error (and subprocess.check_output does not do this)
