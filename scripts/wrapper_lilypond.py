@@ -38,7 +38,7 @@ P_LOGLEVEL="WARN"
 P_DO_PDFRED=True
 
 
-def remove_outputs_if_exist(p_ps, p_pdf):
+def remove_outputs_if_exist(p_ps: str, p_pdf: str) -> None:
     """
     remove the target files, do nothing if they are not there
     """
@@ -48,7 +48,7 @@ def remove_outputs_if_exist(p_ps, p_pdf):
         os.unlink(p_pdf)
 
 
-def print_outputs(output, errout, status, args):
+def print_outputs(output: str, errout: str, status: int, args: list[str]) -> None:
     """
     print output of the program in case of error
     """
@@ -60,7 +60,7 @@ def print_outputs(output, errout, status, args):
     print(f"{sys.argv[0]}: error in executing {args}", file=sys.stderr)
 
 
-def system_check_output(args, p_ps, p_pdf, *, stop_on_output=True):
+def system_check_output(args: list[str], p_ps: str, p_pdf: str, *, stop_on_output: bool = True) -> None:
     """
     this function is here because we want to supress output until we know
     there is an error (and subprocess.check_output does not do this)
@@ -77,7 +77,7 @@ def system_check_output(args, p_ps, p_pdf, *, stop_on_output=True):
             sys.exit(1)
 
 
-def build_lilypond_args(p_out, p_ly):
+def build_lilypond_args(p_out: str, p_ly: str) -> list[str]:
     """ Build the lilypond command line. """
     args=[]
     args.append("lilypond")
@@ -91,7 +91,7 @@ def build_lilypond_args(p_out, p_ly):
     return args
 
 
-def main():
+def main() -> None:
     """
     main entry point
     """
