@@ -34,7 +34,6 @@ P_DO_QPDF=True
 # what warning level do you want?
 # we really need to work with warnings and solve all of them
 P_LOGLEVEL="WARN"
-#P_LOGLEVEL="ERROR"
 # should we reduce the pdf size?
 P_DO_PDFRED=True
 
@@ -120,7 +119,6 @@ def main():
     args=build_lilypond_args(p_out, p_ly)
     try:
         # to make sure that lilypond shuts up...
-        #subprocess.check_output(args)
         system_check_output(args, p_ps, p_pdf)
         # chmod the results
         if P_DO_PS:
